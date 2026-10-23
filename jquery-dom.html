@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Question 3 - jQuery DOM and Events</title>
+    <!-- Include jQuery 4.0.0 using the official full-build CDN link -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    
+    <style>
+        .myStyle { 
+            background-color: rgb(14, 241, 196); 
+            padding: 16px; 
+        }
+    </style>
+</head>
+<body>
+
+    <div id="myElement">Original Text</div>
+    <div id="myDIV"><p>I am a myDIV.</p></div>
+    <button id="myButton">Click me</button>
+
+    <script>
+        // (a) Replace the text of #myElement with "Modified Text" using .text()
+        $("#myElement").text("Modified Text");
+
+        // (b) Add the myStyle class to #myDIV using .addClass()
+        $("#myDIV").addClass("myStyle");
+
+        // (c) Respond to a click on #myButton by showing an alert using .on("click", ...)
+        $("#myButton").on("click", function() {
+            alert("Button clicked!");
+        });
+    </script>
+
+</body>
+</html>

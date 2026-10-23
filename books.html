@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Question 2 - Retrieve and Display JSON Data</title>
+</head>
+<body>
+
+    <h1>Book Information</h1>
+    <div id="bookContainer"></div>
+
+    <script>
+        // Use the native JavaScript fetch() API to read books.json
+        fetch('books.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then(data => {
+                const container = document.getElementById("bookContainer");
+
+                // (a) Title of the first book
+                let p1 = document.createElement("p");
+                p1.textContent = "First Book Title: " + data.books[0].title;
+                container.appendChild(p1);
+
+                // (b) Author of the second book[cite: 2]
+                let p2 = document.createElement("p");
+                p2.textContent = "Second Book Author: " + data.books[1].author;
+                container.appendChild(p2);
+
+                // (c) Genres of both books, clearly grouped by book title[cite: 2]
+                let p3 = document.createElement("p");
+                p3.textContent = data.books[0].title + " — " + data.books[0].genres.join(", ");
+                container.appendChild(p3);
+
+                let p4 = document.createElement("p");
+                p4.textContent = data.books[1].title + " — " + data.books[1].genres.join(", ");
+                container.appendChild(p4);
+            })
+            .catch(error => {
+                // User-friendly error message if fetch fails or JSON is invalid[cite: 2]
+                const container = document.getElementById("bookContainer");
+                container.textContent = "Error: Could not load book data. Please make sure you are running via a local server!";
+            });
+    </script>
+
+</body>
+</html>
