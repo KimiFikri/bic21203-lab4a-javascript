@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <label for="userInput">Enter a number:</label>
+        <input type="text" id="userInput" placeholder="Enter a number">
+        <button id="checkBtn" type="button">Check</button>
+        <p id="result" role="status" aria-live="polite"></p>
+
+        <script>
+            document.getElementById("checkBtn").addEventListener("click", checkInput);
+
+            function checkInput() {
+                let input = document.getElementById("userInput").value;
+
+                // Added .trim() to properly catch whitespace-only values
+                if (input.trim() === "" || isNaN(input)) {
+                    document.getElementById("result").textContent = "Please enter a valid number!";
+                } else {
+                    let num = Number(input);
+                    
+                    // Add your if...else if...else structure here[cite: 1]
+                    if (num < 10) {
+                        document.getElementById("result").textContent = "The number is lower than 10";
+                    } else if (num > 10) {
+                        document.getElementById("result").textContent = "The number is higher than 10";
+                    } else {
+                        document.getElementById("result").textContent = "The number is equal to 10";
+                    }
+                }
+            }
+        </script>
+
+    </body>
+</html>
